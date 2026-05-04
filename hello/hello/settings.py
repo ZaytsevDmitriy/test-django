@@ -52,10 +52,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hello.urls'
 
+import os
+template_dir = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [template_dir],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

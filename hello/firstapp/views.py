@@ -3,8 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanen
 
 
 # Create your views here.
-def index(requst):
-    return HttpResponse ('<h2>Главная<h2>')
+def index(request):
+    # return render(requst, 'firstapp\home.html')
+    header = 'Персональные данные'
+    langs = ['Английский', "Немецкий", 'Испанский']
+    user = {'name': 'Максим', 'age': 18}
+    addr = ("Виноградная", 23, 45)
+    data = {"header":header, "langs": langs, "user": user, "addr": addr}
+    return render(request, "index.html", data)
 def about(request):
     return HttpResponse('<h2>О сайте<h2>')
 def contact(requst):
