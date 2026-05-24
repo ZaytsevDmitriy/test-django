@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect,HttpResponseBadRequest, HttpResponseForbidden
-
+import datetime
 
 # Create your views here.
 def index(request):
     # return render(requst, 'firstapp\home.html')
-    header = 'Персональные данные'
-    langs = ['Английский', "Немецкий", 'Испанский']
-    user = {'name': 'Максим', 'age': 18}
-    addr = ("Виноградная", 23, 45)
-    data = {"header":header, "langs": langs, "user": user, "addr": addr}
-    return render(request, "index.html", data)
+    header = 'Фильтры в шаблонах'
+    num = 2
+    value_date = datetime.datetime.now()
+    value_time = datetime.datetime.now()
+    value_title = "Это пример использования фильтров"
+    value_upper = "Это строка в верхнем регистре"
+
+    data = {"header":header, "num": num, "value_date":value_date, "value_time":value_time, "value_title":value_title, "value_upper":value_upper}
+    return render(request, "firstapp/home.html")
 def about(request):
     return HttpResponse('<h2>О сайте<h2>')
 def contact(requst):

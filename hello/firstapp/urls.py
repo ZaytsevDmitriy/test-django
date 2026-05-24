@@ -1,10 +1,13 @@
 from django.urls import path
 from django.urls import re_path
+from django.views.generic import TemplateView
+
 from .import views
 
 urlpatterns = [
-    re_path(r'^contact/', views.contact, name='contact'),
-    re_path(r'^about', views.about, name='about'),
+    path('contact/', TemplateView.as_view(template_name='firstapp/contact.html'), name='contact'),
+    path('about/', TemplateView.as_view(template_name='firstapp/about.html',
+         extra_context={"work":"Разработка програмных продуктов"})),
     # re_path(r'^product/(?P<productid>\d+)/', views.product),
     path('product/<int:productid>/', views.product),
     path('product/', views.product),
